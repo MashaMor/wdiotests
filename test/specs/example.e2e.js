@@ -1,14 +1,13 @@
-import LoginPage from  '../../(./test/pageobjects/login.page';
-import SecurePage from '../../(./test/pageobjects/secure.page';
+import LoginPage from '../pageobjects/login.page';
+import ProfilePage from '../pageobjects/profile.page';
 
-describe('My Login application', () => {
-    it('should login with valid credentials', () => {
+describe('Authorization', () => {
+    it('user logs in with valid data', () => {
         LoginPage.open();
-
-        LoginPage.login('tomsmith', 'SuperSecretPassword!');
-        expect(SecurePage.flashAlert).toBeExisting();
-        expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!');
+        LoginPage.setLogin('bilota8274@990ys.com');
+        LoginPage.setPassword('1234567890Alice');
+        LoginPage.clickSubmitButton();
+        ProfilePage.isOpen();
     });
 });
 
